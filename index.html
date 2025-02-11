@@ -4,6 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const maleTeddy = document.querySelector(".male");
+        const femaleTeddy = document.querySelector(".female");
+
+        let maleReached = false;
+        let femaleReached = false;
+
+        function checkHug() {
+          if (maleReached && femaleReached && navigator.vibrate) {
+            navigator.vibrate([200, 100, 200]); // Vibrate in a pattern
+          }
+        }
+
+        maleTeddy.addEventListener("animationend", function () {
+          maleReached = true;
+          checkHug();
+        });
+
+        femaleTeddy.addEventListener("animationend", function () {
+          femaleReached = true;
+          checkHug();
+        });
+      });
+    </script>
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
